@@ -23,16 +23,16 @@ export default async function handler(req, res) {
     i++;
     console.log(i);
     
-    // try {
-    //   const uploadedResponse = await cloudinary.uploader.upload_large(fileStr, {
-    //     resource_type: 'video',
-    //     chunk_size: 6000000,
-    //   });
-    //   uploaded_url = uploadedResponse.secure_url;
-    //   console.log(uploaded_url);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      const uploadedResponse = await cloudinary.uploader.upload_large(fileStr, {
+        resource_type: 'video',
+        chunk_size: 6000000,
+      });
+      uploaded_url = uploadedResponse.secure_url;
+      console.log(uploaded_url);
+    } catch (error) {
+      console.log(error);
+    }
     console.log(arr.length);
     res.status(200).json({ data: uploaded_url });
     console.log('complete!');
