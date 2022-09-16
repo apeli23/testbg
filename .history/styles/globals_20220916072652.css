@@ -106,7 +106,7 @@ background-size: cover;
   text-transform: uppercase;
   text-decoration: none;
   padding: 10px 20px;
-  display: none;
+  display: inline-block;
   border-radius: 100px;
   transition: all .2s;
   position: relative;

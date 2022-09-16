@@ -58,7 +58,7 @@ export default function Home() {
     rec.start();
     setTimeout(() => {
       rec.stop()
-      let button = document.getElementById('button');
+      let button = document.getElementById
       button.style.display = "inline-block";
     }, 5000);
   }
@@ -82,43 +82,37 @@ export default function Home() {
 
   async function uploadHandler() {
     console.log(blob)
-    await readFile(blob).then((encoded_file) => {
-      console.log(encoded_file)
-      try {
-        fetch('/api/cloudinary', {
-          method: 'POST',
-          body: JSON.stringify({ data: encoded_file }),
-          headers: { 'Content-Type': 'application/json' },
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            setComputed(true);
-            setLink(data.data);
-          });
-      } catch (error) {
-        console.error(error);
-      }
-    });
+    // await readFile(blob).then((encoded_file) => {
+    //   console.log(encoded_file)
+    //   try {
+    //     fetch('/api/cloudinary', {
+    //       method: 'POST',
+    //       body: JSON.stringify({ data: encoded_file }),
+    //       headers: { 'Content-Type': 'application/json' },
+    //     })
+    //       .then((response) => response.json())
+    //       .then((data) => {
+    //         setComputed(true);
+    //         setLink(data.data);
+    //       });
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // });
   }
   return (
     <>
       <div className='container'>
-      <header className="header">
-          <div className="text-box">
-            <h1 className="heading-primary">
-              <span className="heading-primary-main">
-                Cloudinary Chroma Keying
-              </span>
-            </h1>
-            <a
-              href="#"
-              className="btn btn-white btn-animated"
+        <div className='header'>
+          <h1 className='heading'>
+            <span
               onClick={computeFrame}
+              className="heading-primary-main"
             >
-              Remove Background
-            </a>
-          </div>
-        </header>
+              <b>Merge videos with nextjs</b>
+            </span>
+          </h1>
+        </div>
         <div className="row">
           <div className="column">
             <video className="video" crossOrigin="Anonymous" src='https://res.cloudinary.com/dogjmmett/video/upload/v1644847286/foreground_z4ga7a.mp4' id='video' width='800' height='450' autoPlay muted loop type="video/mp4" />
@@ -133,7 +127,7 @@ export default function Home() {
               onClick={uploadHandler}
               // ref={btnRef}
             >
-              Create  Video Link
+              Get video Link
             </a>
           </div>
         </div>

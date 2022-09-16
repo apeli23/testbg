@@ -5,8 +5,6 @@ export default function Home() {
   let video, canvas, outputContext, temporaryCanvas, temporaryContext, video2;
   const canvasRef = useRef();
   const videoRef = useRef(undefined);
-  const btnRef = useRef(null);
-
   const [computed, setComputed] = useState(false);
   const [link, setLink] = useState('');
   const [blob, setBlob] = useState();
@@ -22,9 +20,7 @@ export default function Home() {
     temporaryCanvas.setAttribute('width', 800);
     temporaryCanvas.setAttribute('height', 450);
     temporaryContext = temporaryCanvas.getContext('2d');
-    video.addEventListener("play", console.log('play'))
-
-    computeFrame()
+    video.addEventListener("play", computeFrame)
   }, []);
 
   async function computeFrame() {
@@ -54,13 +50,9 @@ export default function Home() {
     const stream = cnv.captureStream();
     const rec = new MediaRecorder(stream);
     rec.ondataavailable = e => chunks.push(e.data);
-    rec.onstop = e => setBlob(new Blob(chunks, { type: 'video/webm' }));
+    rec.onstop = e => uploadHandler(new Blob(chunks, { type: 'video/webm' }));
     rec.start();
-    setTimeout(() => {
-      rec.stop()
-      let button = document.getElementById('button');
-      button.style.display = "inline-block";
-    }, 5000);
+    setTimeout(() => rec.stop(), 10000);
   }
 
 
@@ -79,7 +71,6 @@ export default function Home() {
       fr.readAsDataURL(file);
     });
   }
-
   async function uploadHandler() {
     console.log(blob)
     await readFile(blob).then((encoded_file) => {
@@ -103,22 +94,16 @@ export default function Home() {
   return (
     <>
       <div className='container'>
-      <header className="header">
-          <div className="text-box">
-            <h1 className="heading-primary">
-              <span className="heading-primary-main">
-                Cloudinary Chroma Keying
-              </span>
-            </h1>
-            <a
-              href="#"
-              className="btn btn-white btn-animated"
+        <div className='header'>
+          <h1 className='heading'>
+            <span
               onClick={computeFrame}
+              className="heading-primary-main"
             >
-              Remove Background
-            </a>
-          </div>
-        </header>
+              <b>Merge videos with nextjs</b>
+            </span>
+          </h1>
+        </div>
         <div className="row">
           <div className="column">
             <video className="video" crossOrigin="Anonymous" src='https://res.cloudinary.com/dogjmmett/video/upload/v1644847286/foreground_z4ga7a.mp4' id='video' width='800' height='450' autoPlay muted loop type="video/mp4" />
@@ -126,15 +111,7 @@ export default function Home() {
           <div className="column">
             {link ? <a href={link}>LINK : {link}</a> : <h3>your link will show here...</h3>}
             <canvas className="canvas" ref={canvasRef} id="output-canvas" width="800" height="450" ></canvas><br />
-            <a
-            id = "button"
-              href="#"
-              className="btn btn-white btn-animated"
-              onClick={uploadHandler}
-              // ref={btnRef}
-            >
-              Create  Video Link
-            </a>
+            <a href="#" className="btn btn-white btn-animated" onClick={uploadHandler}>Get video Link</a>
           </div>
         </div>
       </div>
