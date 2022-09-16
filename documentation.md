@@ -267,7 +267,7 @@ Better results can be achieved through a more advanced algorithm but for our cas
 
 Your green screen should be able to dissappear at this point.
 
-![GreenScreen Removed](https://res.cloudinary.com/dogjmmett/image/upload/v1644218569/greenScreenRemoved_y56aos.png 'GreenScreen Removed')
+![GreenScreen Removed](https://res.cloudinary.com/dogjmmett/image/upload/v1663346008/Screenshot_2022-09-16_at_19.33.09_pcw0bl.png 'GreenScreen Removed')
 
 Next, we record our animated canvas as a webm file using MediaRecorder API for cloudinary upload.
 
@@ -375,6 +375,6 @@ A file reader allows us to asyncronously read our blob object contents. You can 
 
 Back to our `uploadHandler` function, we will use a try catch function to fetch our backend and POST method to send our encoded file. Our response will be assigned to the earlier created `link` variable using a useState hook which will then be viewed in our front end incase user wishes to download the generated video content.
 
-There are several factors to not here. As you develop, ensure to be in a stable internet connection environment for the canvas to be recorded properly as the video plays. You can enable `controls` option in the video tag to play the video again incase it stops. Every sample will last 5 seconds. But you can choose your own tyming from the `setTimeout` option inside the `computeFrame function`. This article has provided the necessary codes to remove the green screen from the video provided. Feel free to change it and alter the for loop to capture the right background frame. So far, We have created our own Javascript Chroma Keying sample. Try it out to enjoy the experience
+There are several factors to not here. As you develop,. First, be keen to testout and capture the right rgb pixel information in your code. Ensure to be in a stable internet connection environment for the canvas to be recorded properly as the video plays. You can enable `controls` or `loop` option in the video tag to play the video again incase it stops. Every sample will last 5 seconds. But you can choose your own timing from the `setTimeout` option inside the `computeFrame function`. This article has provided the necessary codes to remove the green screen from the video provided. Feel free to change it and alter the for loop to capture the right background frame. So far, We have created our own Javascript Chroma Keying sample. Try it out to enjoy the experience
 
 Happy coding!
