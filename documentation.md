@@ -187,7 +187,7 @@ Replace your function's return statement with the following code,
 ```
 
 The above code should simply create a UI that users will be interracting with. The UI will be like below
-![Project UI](https://res.cloudinary.com/dogjmmett/image/upload/v1644215463/UI_rld11k.png 'Project UI').
+![Project UI](https://res.cloudinary.com/dogjmmett/image/upload/v1663346008/Screenshot_2022-09-16_at_19.33.09_pcw0bl.png 'Project UI').
 
 If the page has not shown up, dont worry, that's because the `REMOVE BACKGROUND` button contains an onClick function named `computeFrame`. Let's create it. Above the return statement, paste the following
 
